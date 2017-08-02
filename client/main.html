@@ -1,0 +1,77 @@
+<head>
+	<title>PorterChatty</title>
+	<link rel="icon" href="https://dl.dropbox.com/s/7sosry4qeps9fvl/favicon.png">
+</head>
+
+<body>
+	{{#if currentUser}}
+		{{> chat}}
+		{{> settings}}
+	{{else}}
+		{{> register}}
+	{{/if}}
+	{{> footer}}
+</body>
+
+<template name="register">
+	<div class="sign_in_and_up">
+		<div class="registerWrapper">
+			<form class="register">
+				<h2>Create account</h2>
+				<input type="text" name="username" placeholder="username" autocomplete="off">
+				<input type="password" name="password" placeholder="password" autocomplete="off">
+				<input type="submit" value="Register">
+			</form>
+		</div>
+
+		<div class="registerWrapper">
+			<form class="signIn">
+				<h2>Sign in</h2>
+				<input type="text" name="username" placeholder="username" autocomplete="off">
+				<input type="password" name="password" placeholder="password" autocomplete="off">
+				<input type="submit" value="Sign In">
+			</form>
+		</div>
+	</div>
+</template>
+
+<template name="settings">
+	<div class="settings">
+		<h2 class="username">{{currentUser.username}}</h2>
+		<button class="signOut">Sign Out</button>
+	</div>
+	
+</template>
+
+<template name="chat">
+	<ul class="chat">
+		<h1>PorterChatty</h1>
+		{{#each messages}}
+			{{> message}}
+		{{/each}}
+	</ul>
+	{{> addMessage}}
+</template>
+
+<template name="message">
+	<li class="message-wrapper {{is_it_me username}}">
+		<div class="message">
+			<div class="message-user">{{user username}}</div>
+			<div class="message-text">{{text}}</div>
+			<div class="message-time">{{time timeStamp}}</div>
+		</div>
+	</li>
+</template>
+
+<template name="addMessage">
+	<form class="newMessage">
+		<input type="text" name="text" placeholder="Type your message..." autocomplete="off">
+		<div><input type="submit" value="Submit"></div>
+	</form>
+</template>
+
+<template name="footer">
+	<div class="lots_of_love">
+		Made with <strong>♥</strong> by Jostein Thorsen
+	</div>
+</template>

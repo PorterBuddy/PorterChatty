@@ -1,0 +1,237 @@
+@import "reset";
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+// Colors
+@bw-0: white;
+@bw-50: gray;
+
+@green: rgb(77, 214, 147);
+@blue: rgb(61, 48, 109);
+@red: red;
+
+@bg1: linear-gradient(180deg, rgb(59, 31, 169) 0px, rgba(59, 31, 169, 0.76) 46%, rgba(59, 31, 169, 0.48));
+
+// Mixins
+#selectableText {
+	-ms-user-select: text;
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	cursor: text;
+}
+
+// Main
+body {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	cursor: default;
+	background: @bg1;
+	font-family: 'Lato', sans-serif;
+}
+
+.lots_of_love {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	background-color: @bw-0;
+	border: 5px solid @blue;
+	margin: 15px;
+	padding: 10px 25px 10px 25px;
+	strong {
+		color: @green;
+		font-size: 18px;
+		text-shadow: 0 3px @blue;
+		margin: 5px;
+	}
+}
+
+.sign_in_and_up {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 80vh;
+	.registerWrapper{
+		display: inline;
+		margin: auto;
+	}
+	.register,
+	.signIn {
+		&.register {
+			box-shadow: 0 0 15px 5px fade(@bw-0, 70%);
+		}
+		border-radius: 10px;
+		border: 5px solid @blue;
+		padding: 40px;
+		background-color: @bw-0;
+		display: inline-flex;
+		flex-direction: column;
+		h2 {
+			font-size: 24px;
+		}
+		input[type="text"],
+		input[type="password"] {
+			#selectableText;
+			font-size: 18px;
+			margin: 15px 0;
+			padding: 10px;
+			border: 2px solid @blue;
+			&.invalid {
+				border-color: @red;
+			}
+		}
+		input[type="submit"] {
+			cursor: pointer;
+			font-size: 18px;
+			margin: 15px 0;
+			padding: 10px;
+			background-color: fade(@blue, 80%);
+			color: @bw-0;
+			font-weight: bold;
+			transition: all 0.5s;
+			&:hover {
+				background-color: @blue;
+			}
+		}
+	}
+}
+
+.settings {
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	padding: 15px;
+	background-color: @bw-0;
+	min-width: 150px;
+	border: 5px solid @blue;
+	h2 {
+		padding: 5px 0 15px 0;
+		width: 100%;
+	}
+	button {
+		cursor: pointer;
+		padding: 5px 25px 5px 25px;
+		width: 100%;
+		background-color: fade(@blue, 80%);
+		color: @bw-0;
+		font-weight: bold;
+		transition: all 0.5s;
+		&:hover {
+			background-color: @blue;
+		}
+	}
+}
+
+.chat {
+	width: 500px;
+	height: calc(~"80vh - 65px");
+	background-color: @green;
+	margin: 5vh auto 0 auto;
+	padding: 65px 0 0 0;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border: 5px solid @blue;
+	border-bottom-width: 0px;
+	h1 {
+		z-index: 3;
+		text-align: center;
+		margin-top: -65px;
+		padding: 15px 0 15px 0;
+		background-color: @green;
+		border-bottom: 2px solid @bw-0;
+		font-size: 24px;
+		font-weight: bold;
+		color: @bw-0;
+		position: fixed;
+		width: 500px;
+		box-shadow: 0 0 5px 1px @blue;
+	}
+}
+.newMessage {
+	width: 500px;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	background-color: @green;
+	box-shadow: 0 0 5px 1px @blue;
+	font-size: 18px;
+	border: 5px solid @blue;
+	border-top-width: 0px;
+	input[type="text"] {
+		#selectableText;
+		flex: 1;
+		padding: 15px;
+		background-color: @bw-0;
+	}
+	div {
+		padding: 5px;
+		background-color: @bw-0;
+		input[type="submit"] {
+			cursor: pointer;
+			padding: 5px 25px 5px 25px;
+			height: 100%;
+			background-color: fade(@blue, 80%);
+			color: white;
+			font-weight: bold;
+			transition: all 0.5s;
+			&:hover {
+				background-color: @blue;
+			}
+		}
+	}
+}
+
+.message-wrapper {
+	width: 100%;
+	text-align: left;
+	&:last-child {
+		padding-bottom: 50px;
+	}
+	&.it-is-me {
+		text-align: right;
+		.message {
+			flex-direction: row-reverse;
+			.message-text {
+				margin: 0 -25px 0 0;
+				padding: 15px 50px 10px 30px;
+			}
+			.message-time {
+				padding: 15px 0 15px 20px;
+			}
+		}
+	}
+	.message {
+		display: inline-flex;
+		flex-direction: row;
+		margin: 15px 15px 0 15px;
+		box-shadow: 0 0 5px 2px @blue;
+		border-radius: 5px;
+		background-color: @bw-0;
+		.message-user {
+			z-index: 2;
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			border-radius: 5px;
+			background-color: fade(@blue, 70%);
+			color: @bw-0;
+			font-weight: bold;
+			margin: 5px;
+		}
+		.message-text {
+			z-index: 1;
+			margin-left: -25px;
+			padding: 15px 30px 10px 50px;
+			max-width: 250px;
+			overflow-x: hidden;
+			word-wrap: break-word;
+		}
+		.message-time {
+			z-index: 2;
+			padding: 15px 20px 15px 0;
+			color: @bw-50;
+		}
+	}
+}
